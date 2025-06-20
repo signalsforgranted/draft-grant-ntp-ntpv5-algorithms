@@ -1,81 +1,66 @@
 ---
-###
-# Internet-Draft Markdown Template
-#
-# Rename this file from draft-todo-yourname-protocol.md to get started.
-# Draft name format is "draft-<yourname>-<workgroup>-<name>.md".
-#
-# For initial setup, you only need to edit the first block of fields.
-# Only "title" needs to be changed; delete "abbrev" if your title is short.
-# Any other content can be edited, but be careful not to introduce errors.
-# Some fields will be set automatically during setup if they are unchanged.
-#
-# Don't include "-00" or "-latest" in the filename.
-# Labels in the form draft-<yourname>-<workgroup>-<name>-latest are used by
-# the tools to refer to the current version; see "docname" for example.
-#
-# This template uses kramdown-rfc: https://github.com/cabo/kramdown-rfc
-# You can replace the entire file if you prefer a different format.
-# Change the file extension to match the format (.xml for XML, etc...)
-#
-###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "NTPv5 Algorithms"
 category: info
-
-docname: draft-todo-yourname-protocol-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+docname: draft-grant-ntp-ntpv5-algorithms
+submissiontype: IETF
 number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
-keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+area: "Internet"
+workgroup: "NTP"
 venue:
-  group: WG
+  group: NTP
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
-
+  mail: ntp@ietf.org
+  arch: https://mailarchive.ietf.org/arch/browse/ntp/
+  github: signalsforgranted/draft-grant-ntp-ntpv5-algorithms
+  latest: https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Sarah Grant
+    email: sarah.grant.ietf@gmail.com
 
 normative:
 
 informative:
-
+  RFC5905:
+  I-D.draft-ietf-ntp-ntpv5:
 ...
 
 --- abstract
 
-TODO Abstract
-
+This document describes considerations of synchronisation algorithms with version 5 of the Network Time Protocol (NTP), and defines the use of NTP version 4's algorithm when used with NTP version 5.
 
 --- middle
 
 # Introduction
 
-TODO Introduction
+NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, clock control, as well as other algorithms.
 
+However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does not define these to allow for implementations to define their own algorithms which may differ or be optimised based on the deployment use case or system constraints.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
+# Algorithm Considerations
+
+TODO: General considerations, including interop (When Algorithms Collide)
+
+TODO: Extension field use
+
+TODO: Signalling of algorithms? If so, this would likely require an IANA registry
+
+# NTPv4 Algorithm use with NTPv5
+
+Support for NTPv4 algorithms is not required for any NTPv5 implementation, however those supporting both versions of NTP may find it easier,
+
+TODO: Describe any adaptations that NTPv5 implementations have to make
 
 # Security Considerations
 
-TODO Security
-
+This document introduces no security considerations.
 
 # IANA Considerations
 
@@ -87,4 +72,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+TODO acknowledge that perhaps this was not the smartest idea.
