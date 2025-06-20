@@ -8,14 +8,14 @@ date:
 consensus: true
 v: 3
 area: "Internet"
-workgroup: "NTP"
+workgroup: "Network Time Protocols"
 venue:
-  group: NTP
-  type: Working Group
-  mail: ntp@ietf.org
-  arch: https://mailarchive.ietf.org/arch/browse/ntp/
-  github: signalsforgranted/draft-grant-ntp-ntpv5-algorithms
-  latest: https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms
+  group: "Network Time Protocols"
+  type: "Working Group"
+  mail: "ntp@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/ntp/"
+  github: "signalsforgranted/draft-grant-ntp-ntpv5-algorithms"
+  latest: "https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms/draft-grant-ntp-ntpv5-algorithms.html"
 author:
  -
     fullname: Sarah Grant
