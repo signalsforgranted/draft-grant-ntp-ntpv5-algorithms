@@ -1,0 +1,165 @@
+
+
+
+
+NTP                                                             S. Grant
+Internet-Draft                                              20 June 2025
+Intended status: Informational                                          
+Expires: 22 December 2025
+
+
+                            NTPv5 Algorithms
+                    draft-grant-ntp-ntpv5-algorithms
+
+Abstract
+
+   This document describes considerations of synchronisation algorithms
+   with version 5 of the Network Time Protocol (NTP), and defines the
+   use of NTP version 4's algorithm when used with NTP version 5.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-grant-ntp-ntpv5/.
+
+   Discussion of this document takes place on the NTP Working Group
+   mailing list (mailto:ntp@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/ntp/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/ntp/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/signalsforgranted/draft-grant-ntp-
+   ntpv5-algorithms.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 22 December 2025.
+
+Copyright Notice
+
+   Copyright (c) 2025 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Algorithm Considerations
+   4.  NTPv4 Algorithm use with NTPv5
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic
+   which handle several different aspects of acquiring and sustaining
+   synchronisation between NTP clients and servers including filtering
+   of measurements, security mechanisms, source selection, clock
+   control, as well as other algorithms.
+
+   However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does
+   not define these to allow for implementations to define their own
+   algorithms which may differ or be optimised based on the deployment
+   use case or system constraints.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Algorithm Considerations
+
+   TODO: General considerations, including interop (When Algorithms
+   Collide)
+
+   TODO: Extension field use
+
+   TODO: Signalling of algorithms?  If so, this would likely require an
+   IANA registry
+
+4.  NTPv4 Algorithm use with NTPv5
+
+   Support for NTPv4 algorithms is not required for any NTPv5
+   implementation, however those supporting both versions of NTP may
+   find it easier,
+
+   TODO: Describe any adaptations that NTPv5 implementations have to
+   make
+
+5.  Security Considerations
+
+   This document introduces no security considerations.
+
+6.  IANA Considerations
+
+   This document has no IANA actions.
+
+7.  References
+
+7.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+7.2.  Informative References
+
+   [I-D.draft-ietf-ntp-ntpv5]
+              Lichvar, M. and T. Mizrahi, "Network Time Protocol Version
+              5", Work in Progress, Internet-Draft, draft-ietf-ntp-
+              ntpv5-04, 10 April 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
+              ntpv5-04>.
+
+   [RFC5905]  Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch,
+              "Network Time Protocol Version 4: Protocol and Algorithms
+              Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010,
+              <https://www.rfc-editor.org/rfc/rfc5905>.
+
+Acknowledgments
+
+   TODO acknowledge that perhaps this was not the smartest idea.
+
+Author's Address
+
+   Sarah Grant
+   Email: sarah.grant.ietf@gmail.com
