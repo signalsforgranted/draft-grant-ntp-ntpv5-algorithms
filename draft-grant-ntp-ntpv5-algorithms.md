@@ -1,7 +1,7 @@
 ---
 title: "NTPv5 Algorithms"
 category: info
-docname: draft-grant-ntp-ntpv5-algorithms
+docname: draft-grant-ntp-ntpv5-algorithms-latest
 submissiontype: IETF
 number:
 date:
