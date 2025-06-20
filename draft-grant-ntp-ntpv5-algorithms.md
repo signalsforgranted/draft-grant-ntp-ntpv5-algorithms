@@ -48,7 +48,9 @@ However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does not define
 
 TODO: General considerations, including interop (When Algorithms Collide)
 
-TODO: Extension field use
+## Use of Extension Fields
+
+Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support. Algorithms SHOULD handle the absence of any extension fields and define behaviour when they are not present.
 
 TODO: Signalling of algorithms? If so, this would likely require an IANA registry
 
