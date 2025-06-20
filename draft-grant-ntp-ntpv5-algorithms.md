@@ -39,7 +39,7 @@ This document describes considerations of synchronisation algorithms with versio
 
 NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, clock control, as well as other algorithms. Later Khronos [RFC9523] defined a companion method to run alongside to an NTPv4 client which aims to detect and mitigate time-shifting based attacks.
 
-However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does not define these to allow for implementations to define their own algorithms which may differ or be optimised based on the deployment use case or system constraints.
+However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does not define synchronisation algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints.
 
 # Conventions and Definitions
 
