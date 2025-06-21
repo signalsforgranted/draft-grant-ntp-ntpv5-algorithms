@@ -2,14 +2,14 @@
 
 
 
-NTP                                                             S. Grant
-Internet-Draft                                              20 June 2025
+Network Time Protocols                                          S. Grant
+Internet-Draft                                              21 June 2025
 Intended status: Informational                                          
-Expires: 22 December 2025
+Expires: 23 December 2025
 
 
                             NTPv5 Algorithms
-                    draft-grant-ntp-ntpv5-algorithms
+                draft-grant-ntp-ntpv5-algorithms-latest
 
 Abstract
 
@@ -22,13 +22,14 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms.
-   Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-grant-ntp-ntpv5/.
+   https://signalsforgranted.github.io/draft-grant-ntp-ntpv5-algorithms/
+   draft-grant-ntp-ntpv5-algorithms.html.  Status information for this
+   document may be found at https://datatracker.ietf.org/doc/draft-
+   grant-ntp-ntpv5-algorithms/.
 
-   Discussion of this document takes place on the NTP Working Group
-   mailing list (mailto:ntp@ietf.org), which is archived at
-   https://mailarchive.ietf.org/arch/browse/ntp/.  Subscribe at
+   Discussion of this document takes place on the Network Time Protocols
+   Working Group mailing list (mailto:ntp@ietf.org), which is archived
+   at https://mailarchive.ietf.org/arch/browse/ntp/.  Subscribe at
    https://www.ietf.org/mailman/listinfo/ntp/.
 
    Source for this draft and an issue tracker can be found at
@@ -50,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 December 2025.
+   This Internet-Draft will expire on 23 December 2025.
 
 Copyright Notice
 
@@ -71,6 +72,7 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Algorithm Considerations
+     3.1.  Use of Extension Fields
    4.  NTPv4 Algorithm use with NTPv5
    5.  Security Considerations
    6.  IANA Considerations
@@ -86,12 +88,14 @@ Table of Contents
    which handle several different aspects of acquiring and sustaining
    synchronisation between NTP clients and servers including filtering
    of measurements, security mechanisms, source selection, clock
-   control, as well as other algorithms.
+   control, as well as other algorithms.  Later Khronos [RFC9523]
+   defined a companion method to run alongside to an NTPv4 client which
+   aims to detect and mitigate time-shifting based attacks.
 
    However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does
-   not define these to allow for implementations to define their own
-   algorithms which may differ or be optimised based on the deployment
-   use case or system constraints.
+   not define synchronisation algorithms to allow for implementations to
+   define their own which may be optimised for specific deployment use
+   case or system constraints.
 
 2.  Conventions and Definitions
 
@@ -106,7 +110,13 @@ Table of Contents
    TODO: General considerations, including interop (When Algorithms
    Collide)
 
-   TODO: Extension field use
+3.1.  Use of Extension Fields
+
+   Algorithms may choose to require additional information be sent by
+   either client or server, however this brings the risk of these fields
+   not being sent by peers which do not support.  Algorithms SHOULD
+   handle the absence of any extension fields and define behaviour when
+   they are not present.
 
    TODO: Signalling of algorithms?  If so, this would likely require an
    IANA registry
@@ -154,6 +164,12 @@ Table of Contents
               "Network Time Protocol Version 4: Protocol and Algorithms
               Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010,
               <https://www.rfc-editor.org/rfc/rfc5905>.
+
+   [RFC9523]  Rozen-Schiff, N., Dolev, D., Mizrahi, T., and M. Schapira,
+              "A Secure Selection and Filtering Mechanism for the
+              Network Time Protocol with Khronos", RFC 9523,
+              DOI 10.17487/RFC9523, February 2024,
+              <https://www.rfc-editor.org/rfc/rfc9523>.
 
 Acknowledgments
 
