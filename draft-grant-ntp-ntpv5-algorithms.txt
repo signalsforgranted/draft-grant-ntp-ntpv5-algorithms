@@ -94,13 +94,13 @@ Table of Contents
    defined a companion method to run alongside with NTPv4 clients which
    aims to detect and mitigate time-shifting based attacks.
 
-   However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does
-   not define synchronisation algorithms to allow for implementations to
-   define their own which may be optimised for specific deployment use
-   case or system constraints.  For all implementations there are many
-   things that should be taken into consideration in the development of
-   both new algorithms as well as the porting of existing algorithms to
-   NTPv5.
+   However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly
+   does not define synchronisation algorithms to allow for
+   implementations to define their own which may be optimised for
+   specific deployment use case or system constraints.  For all
+   implementations there are many things that should be taken into
+   consideration in the development of both new algorithms as well as
+   the porting of existing algorithms to NTPv5.
 
    The decoupling of algorithms to the wire protocol is not new; PTP
    [IEEE1588-2019] has the concept of "profiles", each of which define
