@@ -222,7 +222,9 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9523>.
 
    [SMPTE2059]
-              "*** BROKEN REFERENCE ***".
+              "SMPTE Profile for Use of IEEE-1588 Precision Time
+              Protocol in Professional Broadcast Applications", 2021,
+              <https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf>.
 
 Acknowledgments
 
