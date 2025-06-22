@@ -55,12 +55,6 @@ Algorithms may choose to require additional information be sent by either client
 
 TODO: Signalling of algorithms? If so, this would likely require an IANA registry
 
-# NTPv4 Algorithm use with NTPv5
-
-Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easier to include it as a default or fall-back option in configurations where others are not set.
-
-NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
-
 ## Use of non-UTC timescales
 
 In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible.
