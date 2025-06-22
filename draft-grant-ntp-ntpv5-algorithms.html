@@ -1047,7 +1047,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Grant</td>
-<td class="center">Expires 23 December 2025</td>
+<td class="center">Expires 24 December 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-grant-ntp-ntpv5-algorithms-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-06-21" class="published">21 June 2025</time>
+<time datetime="2025-06-22" class="published">22 June 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-12-23">23 December 2025</time></dd>
+<dd class="expires"><time datetime="2025-12-24">24 December 2025</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1114,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 December 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 December 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1159,6 +1159,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-ntpv4-algorithm-use-with-nt" class="internal xref">NTPv4 Algorithm use with NTPv5</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-use-of-non-utc-timescales" class="internal xref">Use of non-UTC timescales</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-leap-seconds-and-leap-secon" class="internal xref">Leap Seconds and Leap Second Smearing</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1229,8 +1237,25 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-ntpv4-algorithm-use-with-nt">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-ntpv4-algorithm-use-with-nt" class="section-name selfRef">NTPv4 Algorithm use with NTPv5</a>
       </h2>
-<p id="section-4-1">Support for NTPv4 algorithms is not required for any NTPv5 implementation, however those supporting both versions of NTP may find it easier,<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">TODO: Describe any adaptations that NTPv5 implementations have to make<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-1">Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easier to include it as a default or fall-back option in configurations where others are not set.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<div id="use-of-non-utc-timescales">
+<section id="section-4.1">
+        <h3 id="name-use-of-non-utc-timescales">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-use-of-non-utc-timescales" class="section-name selfRef">Use of non-UTC timescales</a>
+        </h3>
+<p id="section-4.1-1">In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations <span class="bcp14">SHOULD NOT</span> mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="leap-seconds-and-leap-second-smearing">
+<section id="section-4.2">
+        <h3 id="name-leap-seconds-and-leap-secon">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-leap-seconds-and-leap-secon" class="section-name selfRef">Leap Seconds and Leap Second Smearing</a>
+        </h3>
+<p id="section-4.2-1">TODO: Cover smearing and leap seconds. NTPv5 already has normative language around not including leap seconds on smeared timescale, however, NTP implementations should have some accommodation for leap second action (adding/removing) that may be linked to synchronisation in some way.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">TODO: Put in any other points<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="security-considerations">
@@ -1239,6 +1264,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-5-1">This document introduces no security considerations.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">TODO: Discuss general attacks on time via algorithms, e.g. time-shifting<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
