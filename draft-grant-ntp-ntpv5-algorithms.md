@@ -57,13 +57,25 @@ TODO: Signalling of algorithms? If so, this would likely require an IANA registr
 
 # NTPv4 Algorithm use with NTPv5
 
-Support for NTPv4 algorithms is not required for any NTPv5 implementation, however those supporting both versions of NTP may find it easier,
+Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easier to include it as a default or fall-back option in configurations where others are not set.
 
-TODO: Describe any adaptations that NTPv5 implementations have to make
+NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
+
+## Use of non-UTC timescales
+
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible.
+
+## Leap Seconds and Leap Second Smearing
+
+TODO: Cover smearing and leap seconds. NTPv5 already has normative language around not including leap seconds on smeared timescale, however, NTP implementations should have some accommodation for leap second action (adding/removing) that may be linked to synchronisation in some way.
+
+TODO: Put in any other points
 
 # Security Considerations
 
 This document introduces no security considerations.
+
+TODO: Discuss general attacks on time via algorithms, e.g. time-shifting
 
 # IANA Considerations
 
