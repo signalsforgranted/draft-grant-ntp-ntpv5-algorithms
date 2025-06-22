@@ -43,7 +43,7 @@ NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handl
 
 However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly does not define synchronisation algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
 
-The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol (such as the "daily jam" function in [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepency in values).
+The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepency in values.
 
 # Conventions and Definitions
 
@@ -53,11 +53,11 @@ The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019
 
 TODO: General considerations, including interop (When Algorithms Collide)
 
+TODO: Signalling of algorithms? If so, this would likely require an IANA registry
+
 ## Use of Extension Fields
 
 Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support. Algorithms SHOULD handle the absence of any extension fields and define behaviour when they are not present.
-
-TODO: Signalling of algorithms? If so, this would likely require an IANA registry
 
 ## Use of non-UTC timescales
 
@@ -74,6 +74,8 @@ Support for NTPv4 algorithms is not required for NTPv5 implementations, however 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
 
 TODO: Put in any other points
+
+TODO: Should Khronos be mandated for use in NTPv5 when using NTPv4 algorithms?
 
 # Security Considerations
 
