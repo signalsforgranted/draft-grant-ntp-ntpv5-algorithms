@@ -106,9 +106,9 @@ Table of Contents
    [IEEE1588-2019] has the concept of "profiles", each of which define
    different behaviours and algorithms adapted for specific deployments
    (for example in automotive or power industries), and may even include
-   additional capabilities to the protocol (such as the "daily jam"
+   additional capabilities to the protocol, such as the "daily jam"
    function in [SMPTE2059] where discontinuity is deliberately
-   transmitted to remove built up discrepency in values).
+   transmitted to remove built up discrepency in values.
 
 2.  Conventions and Definitions
 
@@ -123,6 +123,9 @@ Table of Contents
    TODO: General considerations, including interop (When Algorithms
    Collide)
 
+   TODO: Signalling of algorithms?  If so, this would likely require an
+   IANA registry
+
 3.1.  Use of Extension Fields
 
    Algorithms may choose to require additional information be sent by
@@ -130,9 +133,6 @@ Table of Contents
    not being sent by peers which do not support.  Algorithms SHOULD
    handle the absence of any extension fields and define behaviour when
    they are not present.
-
-   TODO: Signalling of algorithms?  If so, this would likely require an
-   IANA registry
 
 3.2.  Use of non-UTC timescales
 
@@ -166,6 +166,9 @@ Table of Contents
    packets.
 
    TODO: Put in any other points
+
+   TODO: Should Khronos be mandated for use in NTPv5 when using NTPv4
+   algorithms?
 
 5.  Security Considerations
 
@@ -219,11 +222,7 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9523>.
 
    [SMPTE2059]
-              "ST 2059-1:2015 : Generation and Alignment of Interface
-              Signals to the SMPTE Epoch", The Society of Motion Picture
-              and Television Engineers, DOI 10.5594/smpte.st2059-1.2015,
-              ISBN ["9781614828631"], April 2015,
-              <https://doi.org/10.5594/smpte.st2059-1.2015>.
+              "*** BROKEN REFERENCE ***".
 
 Acknowledgments
 
