@@ -73,9 +73,9 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Algorithm Considerations
      3.1.  Use of Extension Fields
+     3.2.  Use of non-UTC timescales
+     3.3.  Leap Seconds and Leap Second Smearing
    4.  NTPv4 Algorithm use with NTPv5
-     4.1.  Use of non-UTC timescales
-     4.2.  Leap Seconds and Leap Second Smearing
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -91,13 +91,16 @@ Table of Contents
    synchronisation between NTP clients and servers including filtering
    of measurements, security mechanisms, source selection, clock
    control, as well as other algorithms.  Later Khronos [RFC9523]
-   defined a companion method to run alongside to an NTPv4 client which
+   defined a companion method to run alongside with NTPv4 clients which
    aims to detect and mitigate time-shifting based attacks.
 
    However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does
    not define synchronisation algorithms to allow for implementations to
    define their own which may be optimised for specific deployment use
-   case or system constraints.
+   case or system constraints.  For all implementations there are many
+   things that should be taken into consideration in the development of
+   both new algorithms as well as the porting of existing algorithms to
+   NTPv5.
 
 2.  Conventions and Definitions
 
@@ -123,6 +126,22 @@ Table of Contents
    TODO: Signalling of algorithms?  If so, this would likely require an
    IANA registry
 
+3.2.  Use of non-UTC timescales
+
+   In addition to UTC, NTPv5 includes support for the transmission of
+   TAI, UT1, and leap-smeared UTC.  Implementations SHOULD NOT mix
+   timestamps from different timescales when performing calculations,
+   and it's recommended they minimise the conversion of timescales where
+   possible.
+
+3.3.  Leap Seconds and Leap Second Smearing
+
+   TODO: Cover smearing and leap seconds.  NTPv5 already has normative
+   language around not including leap seconds on smeared timescale,
+   however, NTP implementations should have some accommodation for leap
+   second action (adding/removing) that may be linked to synchronisation
+   in some way.
+
 4.  NTPv4 Algorithm use with NTPv5
 
    Support for NTPv4 algorithms is not required for NTPv5
@@ -137,22 +156,6 @@ Table of Contents
    ensure longevity and prevent rollover in the immediate future, which
    should be taken into consideration when processing and producing
    packets.
-
-4.1.  Use of non-UTC timescales
-
-   In addition to UTC, NTPv5 includes support for the transmission of
-   TAI, UT1, and leap-smeared UTC.  Implementations SHOULD NOT mix
-   timestamps from different timescales when performing calculations,
-   and it's recommended they minimise the conversion of timescales where
-   possible.
-
-4.2.  Leap Seconds and Leap Second Smearing
-
-   TODO: Cover smearing and leap seconds.  NTPv5 already has normative
-   language around not including leap seconds on smeared timescale,
-   however, NTP implementations should have some accommodation for leap
-   second action (adding/removing) that may be linked to synchronisation
-   in some way.
 
    TODO: Put in any other points
 
