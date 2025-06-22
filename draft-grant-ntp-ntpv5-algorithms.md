@@ -29,7 +29,9 @@ informative:
   I-D.draft-ietf-ntp-ntpv5:
   IEEE1588-2019: DOI.10.1109/IEEESTD.2020.9120376
   SMPTE2059:
-    ISBN: 9781683032465
+    title: "SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"
+    date: 2021
+    target: https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf
 ...
 
 --- abstract
