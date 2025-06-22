@@ -1200,6 +1200,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span> defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, clock control, as well as other algorithms. Later Khronos <span>[<a href="#RFC9523" class="cite xref">RFC9523</a>]</span> defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">However, NTP version 5 (NTPv5) [draft-ietf-ntp-ntpv5] explicitly does not define synchronisation algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The decoupling of algorithms to the wire protocol is not new; PTP <span>[<a href="#IEEE1588-2019" class="cite xref">IEEE1588-2019</a>]</span> has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol (such as the "daily jam" function in <span>[<a href="#SMPTE2059" class="cite xref">SMPTE2059</a>]</span> where discontinuity is deliberately transmitted to remove built up discrepency in values).<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1305,13 +1306,21 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd>
 <span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ntp-ntpv5-04</span>, <time datetime="2025-04-10" class="refDate">10 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-04">https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="IEEE1588-2019">[IEEE1588-2019]</dt>
+        <dd>
+<span class="refTitle">"IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">DOI 10.1109/ieeestd.2020.9120376</span>, <span class="seriesInfo">ISBN ["9781504463416"]</span>, <time datetime="2020-06" class="refDate">June 2020</time>, <span>&lt;<a href="https://doi.org/10.1109/ieeestd.2020.9120376">https://doi.org/10.1109/ieeestd.2020.9120376</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC5905">[RFC5905]</dt>
         <dd>
 <span class="refAuthor">Mills, D.</span>, <span class="refAuthor">Martin, J., Ed.</span>, <span class="refAuthor">Burbank, J.</span>, and <span class="refAuthor">W. Kasch</span>, <span class="refTitle">"Network Time Protocol Version 4: Protocol and Algorithms Specification"</span>, <span class="seriesInfo">RFC 5905</span>, <span class="seriesInfo">DOI 10.17487/RFC5905</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5905">https://www.rfc-editor.org/rfc/rfc5905</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9523">[RFC9523]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Rozen-Schiff, N.</span>, <span class="refAuthor">Dolev, D.</span>, <span class="refAuthor">Mizrahi, T.</span>, and <span class="refAuthor">M. Schapira</span>, <span class="refTitle">"A Secure Selection and Filtering Mechanism for the Network Time Protocol with Khronos"</span>, <span class="seriesInfo">RFC 9523</span>, <span class="seriesInfo">DOI 10.17487/RFC9523</span>, <time datetime="2024-02" class="refDate">February 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9523">https://www.rfc-editor.org/rfc/rfc9523</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SMPTE2059">[SMPTE2059]</dt>
+      <dd>
+<span class="refTitle">"ST 2059-1:2015 : Generation and Alignment of Interface Signals to the SMPTE Epoch"</span>, <span class="refContent">The Society of Motion Picture and Television Engineers</span>, <span class="seriesInfo">DOI 10.5594/smpte.st2059-1.2015</span>, <span class="seriesInfo">ISBN ["9781614828631"]</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://doi.org/10.5594/smpte.st2059-1.2015">https://doi.org/10.5594/smpte.st2059-1.2015</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

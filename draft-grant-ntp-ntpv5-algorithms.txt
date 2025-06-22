@@ -102,6 +102,14 @@ Table of Contents
    both new algorithms as well as the porting of existing algorithms to
    NTPv5.
 
+   The decoupling of algorithms to the wire protocol is not new; PTP
+   [IEEE1588-2019] has the concept of "profiles", each of which define
+   different behaviours and algorithms adapted for specific deployments
+   (for example in automotive or power industries), and may even include
+   additional capabilities to the protocol (such as the "daily jam"
+   function in [SMPTE2059] where discontinuity is deliberately
+   transmitted to remove built up discrepency in values).
+
 2.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -192,6 +200,13 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
               ntpv5-04>.
 
+   [IEEE1588-2019]
+              "IEEE Standard for a Precision Clock Synchronization
+              Protocol for Networked Measurement and Control Systems",
+              IEEE, DOI 10.1109/ieeestd.2020.9120376,
+              ISBN ["9781504463416"], June 2020,
+              <https://doi.org/10.1109/ieeestd.2020.9120376>.
+
    [RFC5905]  Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch,
               "Network Time Protocol Version 4: Protocol and Algorithms
               Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010,
@@ -202,6 +217,13 @@ Table of Contents
               Network Time Protocol with Khronos", RFC 9523,
               DOI 10.17487/RFC9523, February 2024,
               <https://www.rfc-editor.org/rfc/rfc9523>.
+
+   [SMPTE2059]
+              "ST 2059-1:2015 : Generation and Alignment of Interface
+              Signals to the SMPTE Epoch", The Society of Motion Picture
+              and Television Engineers, DOI 10.5594/smpte.st2059-1.2015,
+              ISBN ["9781614828631"], April 2015,
+              <https://doi.org/10.5594/smpte.st2059-1.2015>.
 
 Acknowledgments
 
