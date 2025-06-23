@@ -36,17 +36,17 @@ informative:
 
 --- abstract
 
-This document describes considerations of synchronisation algorithms with version 5 of the Network Time Protocol (NTP), and defines the use of NTP version 4's algorithm when used with NTP version 5.
+This document describes considerations of synchronisation algorithms with version 5 of the Network Time Protocol (NTP), and defines the use of NTP version 4's algorithms when used with NTP version 5.
 
 --- middle
 
 # Introduction
 
-NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, clock control, as well as other algorithms. Later Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
+NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control, amongst others. Later Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
 
-However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly does not define synchronisation algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
+However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
 
-The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepency in values.
+The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepencies in values.
 
 # Conventions and Definitions
 
@@ -72,7 +72,7 @@ TODO: Cover smearing and leap seconds. NTPv5 already has normative language arou
 
 # NTPv4 Algorithm use with NTPv5
 
-Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easier to include it as a default or fall-back option in configurations where others are not set.
+Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.
 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
 
