@@ -66,7 +66,7 @@ Algorithms may choose to require additional information be sent by either client
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible. New algorithms may choose to support a restricted number of timescales.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce confusion and aide in accuracy. New algorithms may choose to support a restricted number of timescales.
 
 ## Leap Seconds and Leap Second Smearing
 
@@ -80,11 +80,13 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 TODO: Put in any other points
 
-TODO: Should Khronos be mandated for use in NTPv5 when using NTPv4 algorithms?
-
 # Security Considerations
 
 The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384]. Security considerations specific to NTPv4 are discussed in RFC 5905 [RFC5905], and NTS [RFC8915] which is depended on by NTPv5.
+
+TODO: Describe which threats are most applicable to algorithms in terms of potential mitigation - for example packet manipulation is better handled via packet authentication (e.g. NTS), however packet delay could be mitigated.
+
+TODO: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
 
 TODO: Discuss general attacks on time via algorithms, e.g. time-shifting
 
