@@ -1200,7 +1200,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span> defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control, amongst others. Later Khronos <span>[<a href="#RFC9523" class="cite xref">RFC9523</a>]</span> defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">However, NTP version 5 (NTPv5) <span>[<a href="#I-D.draft-ietf-ntp-ntpv5" class="cite xref">I-D.draft-ietf-ntp-ntpv5</a>]</span> explicitly does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">The decoupling of algorithms to the wire protocol is not new; PTP <span>[<a href="#IEEE1588-2019" class="cite xref">IEEE1588-2019</a>]</span> has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in <span>[<a href="#SMPTE2059" class="cite xref">SMPTE2059</a>]</span> where discontinuity is deliberately transmitted to remove built up discrepencies in values.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">The decoupling of algorithms to the wire protocol is not new; PTP <span>[<a href="#IEEE1588-2019" class="cite xref">IEEE1588-2019</a>]</span> has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in SMPTE ST-2059 <span>[<a href="#SMPTE2059" class="cite xref">SMPTE2059</a>]</span> where discontinuity is deliberately transmitted to remove built up discrepencies in values.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1263,7 +1263,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">This document introduces no security considerations.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">The security considerations for time protocols in general are discussed in RFC 7384 <span>[<a href="#RFC7384" class="cite xref">RFC7384</a>]</span>. Security considerations specific to NTPv4 are discussed in RFC 5905 <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span>, and NTS <span>[<a href="#RFC8915" class="cite xref">RFC8915</a>]</span> which is depended on by NTPv5.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">TODO: Discuss general attacks on time via algorithms, e.g. time-shifting<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1314,6 +1314,14 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dt id="RFC5905">[RFC5905]</dt>
         <dd>
 <span class="refAuthor">Mills, D.</span>, <span class="refAuthor">Martin, J., Ed.</span>, <span class="refAuthor">Burbank, J.</span>, and <span class="refAuthor">W. Kasch</span>, <span class="refTitle">"Network Time Protocol Version 4: Protocol and Algorithms Specification"</span>, <span class="seriesInfo">RFC 5905</span>, <span class="seriesInfo">DOI 10.17487/RFC5905</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5905">https://www.rfc-editor.org/rfc/rfc5905</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7384">[RFC7384]</dt>
+        <dd>
+<span class="refAuthor">Mizrahi, T.</span>, <span class="refTitle">"Security Requirements of Time Protocols in Packet Switched Networks"</span>, <span class="seriesInfo">RFC 7384</span>, <span class="seriesInfo">DOI 10.17487/RFC7384</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7384">https://www.rfc-editor.org/rfc/rfc7384</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8915">[RFC8915]</dt>
+        <dd>
+<span class="refAuthor">Franke, D.</span>, <span class="refAuthor">Sibold, D.</span>, <span class="refAuthor">Teichel, K.</span>, <span class="refAuthor">Dansarie, M.</span>, and <span class="refAuthor">R. Sundblad</span>, <span class="refTitle">"Network Time Security for the Network Time Protocol"</span>, <span class="seriesInfo">RFC 8915</span>, <span class="seriesInfo">DOI 10.17487/RFC8915</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8915">https://www.rfc-editor.org/rfc/rfc8915</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9523">[RFC9523]</dt>
         <dd>

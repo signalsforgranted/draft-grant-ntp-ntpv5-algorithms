@@ -107,8 +107,8 @@ Table of Contents
    different behaviours and algorithms adapted for specific deployments
    (for example in automotive or power industries), and may even include
    additional capabilities to the protocol, such as the "daily jam"
-   function in [SMPTE2059] where discontinuity is deliberately
-   transmitted to remove built up discrepencies in values.
+   function in SMPTE ST-2059 [SMPTE2059] where discontinuity is
+   deliberately transmitted to remove built up discrepencies in values.
 
 2.  Conventions and Definitions
 
@@ -172,7 +172,10 @@ Table of Contents
 
 5.  Security Considerations
 
-   This document introduces no security considerations.
+   The security considerations for time protocols in general are
+   discussed in RFC 7384 [RFC7384].  Security considerations specific to
+   NTPv4 are discussed in RFC 5905 [RFC5905], and NTS [RFC8915] which is
+   depended on by NTPv5.
 
    TODO: Discuss general attacks on time via algorithms, e.g. time-
    shifting
@@ -214,6 +217,15 @@ Table of Contents
               "Network Time Protocol Version 4: Protocol and Algorithms
               Specification", RFC 5905, DOI 10.17487/RFC5905, June 2010,
               <https://www.rfc-editor.org/rfc/rfc5905>.
+
+   [RFC7384]  Mizrahi, T., "Security Requirements of Time Protocols in
+              Packet Switched Networks", RFC 7384, DOI 10.17487/RFC7384,
+              October 2014, <https://www.rfc-editor.org/rfc/rfc7384>.
+
+   [RFC8915]  Franke, D., Sibold, D., Teichel, K., Dansarie, M., and R.
+              Sundblad, "Network Time Security for the Network Time
+              Protocol", RFC 8915, DOI 10.17487/RFC8915, September 2020,
+              <https://www.rfc-editor.org/rfc/rfc8915>.
 
    [RFC9523]  Rozen-Schiff, N., Dolev, D., Mizrahi, T., and M. Schapira,
               "A Secure Selection and Filtering Mechanism for the
