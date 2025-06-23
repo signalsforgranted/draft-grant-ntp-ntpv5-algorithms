@@ -48,7 +48,7 @@ NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handl
 
 However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
 
-The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepencies in values.
+The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
 
 # Conventions and Definitions
 
@@ -66,7 +66,7 @@ Algorithms may choose to require additional information be sent by either client
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce confusion and aide in accuracy. New algorithms may choose to support a restricted number of timescales.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales.
 
 ## Leap Seconds and Leap Second Smearing
 
@@ -82,7 +82,7 @@ TODO: Put in any other points
 
 # Security Considerations
 
-The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384]. Security considerations specific to NTPv4 are discussed in RFC 5905 [RFC5905], and NTS [RFC8915] which is depended on by NTPv5.
+The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384], as well as security considerations specified in NTPv5 [I-D.draft-ietf-ntp-ntpv5] and NTS [RFC8915] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks.
 
 TODO: Describe which threats are most applicable to algorithms in terms of potential mitigation - for example packet manipulation is better handled via packet authentication (e.g. NTS), however packet delay could be mitigated.
 
