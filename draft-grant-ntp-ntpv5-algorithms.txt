@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                              22 June 2025
+Internet-Draft                                              23 June 2025
 Intended status: Informational                                          
-Expires: 24 December 2025
+Expires: 25 December 2025
 
 
                             NTPv5 Algorithms
@@ -15,7 +15,7 @@ Abstract
 
    This document describes considerations of synchronisation algorithms
    with version 5 of the Network Time Protocol (NTP), and defines the
-   use of NTP version 4's algorithm when used with NTP version 5.
+   use of NTP version 4's algorithms when used with NTP version 5.
 
 About This Document
 
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 December 2025.
+   This Internet-Draft will expire on 25 December 2025.
 
 Copyright Notice
 
@@ -89,18 +89,18 @@ Table of Contents
    NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic
    which handle several different aspects of acquiring and sustaining
    synchronisation between NTP clients and servers including filtering
-   of measurements, security mechanisms, source selection, clock
-   control, as well as other algorithms.  Later Khronos [RFC9523]
-   defined a companion method to run alongside with NTPv4 clients which
-   aims to detect and mitigate time-shifting based attacks.
+   of measurements, security mechanisms, source selection, and clock
+   control, amongst others.  Later Khronos [RFC9523] defined a companion
+   method to run alongside with NTPv4 clients which aims to detect and
+   mitigate time-shifting based attacks.
 
    However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly
-   does not define synchronisation algorithms to allow for
-   implementations to define their own which may be optimised for
-   specific deployment use case or system constraints.  For all
-   implementations there are many things that should be taken into
-   consideration in the development of both new algorithms as well as
-   the porting of existing algorithms to NTPv5.
+   does not define these algorithms to allow for implementations to
+   define their own which may be optimised for specific deployment use
+   case or system constraints.  For all implementations there are many
+   things that should be taken into consideration in the development of
+   both new algorithms as well as the porting of existing algorithms to
+   NTPv5.
 
    The decoupling of algorithms to the wire protocol is not new; PTP
    [IEEE1588-2019] has the concept of "profiles", each of which define
@@ -108,7 +108,7 @@ Table of Contents
    (for example in automotive or power industries), and may even include
    additional capabilities to the protocol, such as the "daily jam"
    function in [SMPTE2059] where discontinuity is deliberately
-   transmitted to remove built up discrepency in values.
+   transmitted to remove built up discrepencies in values.
 
 2.  Conventions and Definitions
 
@@ -154,7 +154,7 @@ Table of Contents
 
    Support for NTPv4 algorithms is not required for NTPv5
    implementations, however those supporting both versions of NTP may
-   find it easier to include it as a default or fall-back option in
+   find it easy to include as a default or fall-back option in
    configurations where others are not set.
 
    NTPv5 introduces several key differences to NTPv4 that
