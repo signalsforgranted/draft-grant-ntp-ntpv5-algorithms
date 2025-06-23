@@ -25,6 +25,8 @@ normative:
 
 informative:
   RFC5905:
+  RFC7384:
+  RFC8915:
   RFC9523:
   I-D.draft-ietf-ntp-ntpv5:
   IEEE1588-2019: DOI.10.1109/IEEESTD.2020.9120376
@@ -82,7 +84,7 @@ TODO: Should Khronos be mandated for use in NTPv5 when using NTPv4 algorithms?
 
 # Security Considerations
 
-This document introduces no security considerations.
+The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384]. Security considerations specific to NTPv4 are discussed in RFC 5905 [RFC5905], and NTS [RFC8915] which is depended on by NTPv5.
 
 TODO: Discuss general attacks on time via algorithms, e.g. time-shifting
 
