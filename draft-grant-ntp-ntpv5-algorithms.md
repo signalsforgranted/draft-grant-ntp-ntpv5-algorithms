@@ -46,7 +46,7 @@ This document describes considerations of synchronisation algorithms with versio
 
 NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control, amongst others. Later Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
 
-However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
+However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
 
 The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepencies in values.
 
@@ -66,7 +66,7 @@ Algorithms may choose to require additional information be sent by either client
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible. New algorithms may choose to support a restricted number of timescales.
 
 ## Leap Seconds and Leap Second Smearing
 
