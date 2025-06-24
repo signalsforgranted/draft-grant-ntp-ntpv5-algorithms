@@ -25,6 +25,7 @@ normative:
 
 informative:
   RFC5905:
+  RFC7164:
   RFC7384:
   RFC8915:
   RFC9523:
@@ -34,6 +35,13 @@ informative:
     title: "SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"
     date: 2021
     target: https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf
+  TF.460:
+    title: "Standard-frequency and time-signal emissions"
+    author:
+      org: International Telecommunications Union
+    date: 2002
+    seriesinfo:
+      ITU-R: Recommendation TF.460-6
 ...
 
 --- abstract
@@ -46,7 +54,7 @@ This document describes considerations of synchronisation algorithms with versio
 
 NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control, amongst others. Later Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
 
-However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many things that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5.
+However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many factors that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5, such as trade-offs between precision and security, costs of complexity, etc.
 
 The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
 
@@ -62,15 +70,18 @@ TODO: Signalling of algorithms? If so, this would likely require an IANA registr
 
 ## Use of Extension Fields
 
-Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support. Algorithms SHOULD handle the absence of any extension fields and define behaviour when they are not present.
+Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support them. Algorithms SHOULD handle the absence of any extension fields and define behaviour when they are not present.
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations SHOULD NOT mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations should not mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales.
 
 ## Leap Seconds and Leap Second Smearing
 
-TODO: Cover smearing and leap seconds. NTPv5 already has normative language around not including leap seconds on smeared timescale, however, NTP implementations should have some accommodation for leap second action (adding/removing) that may be linked to synchronisation in some way.
+Leap seconds are inserted (in the case of positive leap seconds) or removed (in the case of negative leap seconds) at the beginning of the last second of the scheduled leap second day, which may be the last day of any UTC month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations have one of multiple approaches to applying leap seconds to system time; they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or where the system clock is "slewed" or "smeared" either before or commencing from the the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
+
+TODO: Write considerations for implementors.
+
 
 # NTPv4 Algorithm use with NTPv5
 
@@ -83,8 +94,6 @@ TODO: Put in any other points
 # Security Considerations
 
 The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384], as well as security considerations specified in NTPv5 [I-D.draft-ietf-ntp-ntpv5] and NTS [RFC8915] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks.
-
-TODO: Describe which threats are most applicable to algorithms in terms of potential mitigation - for example packet manipulation is better handled via packet authentication (e.g. NTS), however packet delay could be mitigated.
 
 TODO: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
 
