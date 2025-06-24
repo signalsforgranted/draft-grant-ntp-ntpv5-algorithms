@@ -257,7 +257,8 @@ Table of Contents
 
    [TF.460]   International Telecommunications Union, "Standard-
               frequency and time-signal emissions", ITU-R Recommendation
-              TF.460-6, 2002.
+              TF.460-6, February 2002,
+              <http://www.itu.int/rec/R-REC-TF.460/>.
 
 Acknowledgments
 
