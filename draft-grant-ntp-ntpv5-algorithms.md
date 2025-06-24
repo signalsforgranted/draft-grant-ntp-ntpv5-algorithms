@@ -37,9 +37,10 @@ informative:
     target: https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf
   TF.460:
     title: "Standard-frequency and time-signal emissions"
+    target: http://www.itu.int/rec/R-REC-TF.460/
     author:
       org: International Telecommunications Union
-    date: 2002
+    date: 2002-02
     seriesinfo:
       ITU-R: Recommendation TF.460-6
 ...
