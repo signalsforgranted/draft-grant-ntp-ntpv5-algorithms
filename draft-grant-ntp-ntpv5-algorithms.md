@@ -71,18 +71,21 @@ TODO: Signalling of algorithms? If so, this would likely require an IANA registr
 
 ## Use of Extension Fields
 
-Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support them. Algorithms SHOULD handle the absence of any extension fields and define behaviour when they are not present.
+Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support them. Algorithms should have explicit behaviours defined when they are not present.
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations should not mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales, and use different logic depending on the timescale supported.
 
 ## Leap Seconds and Leap Second Smearing
 
-Leap seconds are inserted (in the case of positive leap seconds) or removed (in the case of negative leap seconds) at the beginning of the last second of the scheduled leap second day, which may be the last day of any UTC month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations have one of multiple approaches to applying leap seconds to system time; they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or where the system clock is "slewed" or "smeared" either before or commencing from the the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
+TODO: Bit more of a primer on leap seconds
 
-TODO: Write considerations for implementors.
+Leap seconds are inserted (in the case of positive leap seconds) or removed (in the case of negative leap seconds) at the beginning of the last second of the scheduled leap second day, which may be the last day of any UTC month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of multiple approaches to applying leap seconds to system time; they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
 
+TODO: Write considerations for implementors
+
+TODO: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
 
 # NTPv4 Algorithm use with NTPv5
 
