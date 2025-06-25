@@ -65,9 +65,9 @@ The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019
 
 # Algorithm Considerations
 
-TODO: General considerations, including interop (When Algorithms Collide)
+**TODO**: General considerations, including interop (When Algorithms Collide)
 
-TODO: Signalling of algorithms? If so, this would likely require an IANA registry
+**TODO**: Signalling of algorithms? If so, this would likely require an IANA registry
 
 ## Use of Extension Fields
 
@@ -79,13 +79,13 @@ In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and
 
 ## Leap Seconds and Leap Second Smearing
 
-TODO: Bit more of a primer on leap seconds
+**TODO**: Bit more of a primer on leap seconds
 
 Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
 
-TODO: Write considerations for implementors
+**TODO**: Write considerations for implementors
 
-TODO: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
+**TODO**: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
 
 # NTPv4 Algorithm use with NTPv5
 
@@ -93,15 +93,15 @@ Support for NTPv4 algorithms is not required for NTPv5 implementations, however 
 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
 
-TODO: Put in any other points
+**TODO**: Put in any other points
 
 # Security Considerations
 
-The security considerations for time protocols in general are discussed in RFC 7384 [RFC7384], as well as security considerations specified in NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
+General security considerations for time protocols are discussed in RFC 7384 [RFC7384], as well as security considerations specified in NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
 
-TODO: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
+**TODO**: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
 
-TODO: Discuss general attacks on time via algorithms, e.g. time-shifting
+**TODO**: Discuss general attacks on time via algorithms, e.g. time-shifting
 
 # IANA Considerations
 
