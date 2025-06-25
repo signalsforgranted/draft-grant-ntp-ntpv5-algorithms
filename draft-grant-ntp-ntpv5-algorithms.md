@@ -97,7 +97,7 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 # Security Considerations
 
-General security considerations for time protocols are discussed in RFC 7384 [RFC7384], as well as security considerations specified in NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
+General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
 
 **TODO**: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
 
