@@ -53,11 +53,11 @@ This document describes considerations of synchronisation algorithms with versio
 
 # Introduction
 
-NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control, amongst others. Later Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
+NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control amongst others. In addition Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
 
 However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many factors that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5, such as trade-offs between precision and security, costs of complexity, etc.
 
-The decoupling of algorithms to the wire protocol is not new; PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
+The decoupling of algorithms to the wire protocol is not new - PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
 
 # Conventions and Definitions
 
@@ -79,11 +79,9 @@ In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and
 
 ## Leap Seconds and Leap Second Smearing
 
-**TODO**: Bit more of a primer on leap seconds
+A leap second is a second inserted or removed from the UTC timescale to maintain synchronisation with the rotation of the earth. Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
 
-Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
-
-**TODO**: Write considerations for implementors
+Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".
 
 **TODO**: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
 
@@ -99,9 +97,12 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
 
-**TODO**: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
+New algorithm designers should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the use case.
 
 **TODO**: Discuss general attacks on time via algorithms, e.g. time-shifting
+
+**TODO**: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
+
 
 # IANA Considerations
 
