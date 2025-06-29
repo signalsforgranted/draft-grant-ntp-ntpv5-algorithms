@@ -29,6 +29,7 @@ informative:
   RFC7384:
   RFC8915:
   RFC9523:
+  RFC9769:
   I-D.draft-ietf-ntp-ntpv5:
   IEEE1588-2019: DOI.10.1109/IEEESTD.2020.9120376
   SMPTE2059:
@@ -53,7 +54,7 @@ This document describes considerations of synchronisation algorithms with versio
 
 # Introduction
 
-NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control amongst others. In addition Khronos [RFC9523] defined a companion method to run alongside with NTPv4 clients which aims to detect and mitigate time-shifting based attacks.
+NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control amongst others. Over time NTPv4 has seen additional algorithms be defined to improve security and accuracy, with Khronos [RFC9523] defining a companion method to run alongside with NTPv4 clients that aims to detect and mitigate time-shifting based attacks, and interleaved modes [RFC9769] which defines additional operational modes for both clients and servers by holding additional state and performing additional checks on timestamp values.
 
 However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many factors that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5, such as trade-offs between precision and security, costs of complexity, etc.
 
