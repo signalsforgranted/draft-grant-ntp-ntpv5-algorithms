@@ -96,7 +96,7 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 # Security Considerations
 
-General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats are mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which can be mitigated to various extents via NTS [RFC8915].
+General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which may be better mitigated through the use of authenticated encryption via NTS [RFC8915].
 
 New algorithm designers should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the use case.
 
