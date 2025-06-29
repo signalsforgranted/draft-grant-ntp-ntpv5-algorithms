@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                              26 June 2025
+Internet-Draft                                              29 June 2025
 Intended status: Informational                                          
-Expires: 28 December 2025
+Expires: 31 December 2025
 
 
                             NTPv5 Algorithms
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 December 2025.
+   This Internet-Draft will expire on 31 December 2025.
 
 Copyright Notice
 
@@ -90,9 +90,13 @@ Table of Contents
    which handle several different aspects of acquiring and sustaining
    synchronisation between NTP clients and servers including filtering
    of measurements, security mechanisms, source selection, and clock
-   control amongst others.  In addition Khronos [RFC9523] defined a
-   companion method to run alongside with NTPv4 clients which aims to
-   detect and mitigate time-shifting based attacks.
+   control amongst others.  Over time NTPv4 has seen additional
+   algorithms be defined to improve security and accuracy, with Khronos
+   [RFC9523] defining a companion method to run alongside with NTPv4
+   clients that aims to detect and mitigate time-shifting based attacks,
+   and interleaved modes [RFC9769] which defines additional operational
+   modes for both clients and servers by holding additional state and
+   performing additional checks on timestamp values.
 
    However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not
    define these algorithms to allow for implementations to define their
@@ -189,10 +193,11 @@ Table of Contents
 
    General security considerations for time protocols are discussed in
    RFC 7384 [RFC7384], and security considerations specific to NTPv5
-   [I-D.draft-ietf-ntp-ntpv5] should also be noted.  Not all threats are
-   mitigated through the use of algorithms, namely packet manipulation,
-   spoofing, and cryptographic performance attacks which can be
-   mitigated to various extents via NTS [RFC8915].
+   [I-D.draft-ietf-ntp-ntpv5] should also be noted.  Not all threats can
+   be sufficiently mitigated through the use of algorithms, namely
+   packet manipulation, spoofing, and cryptographic performance attacks
+   which may be better mitigated through the use of authenticated
+   encryption via NTS [RFC8915].
 
    New algorithm designers should take into consideration the expected
    threat model of deployments and describe which threats could
@@ -262,6 +267,10 @@ Table of Contents
               Network Time Protocol with Khronos", RFC 9523,
               DOI 10.17487/RFC9523, February 2024,
               <https://www.rfc-editor.org/rfc/rfc9523>.
+
+   [RFC9769]  Lichvar, M. and A. Malhotra, "NTP Interleaved Modes",
+              RFC 9769, DOI 10.17487/RFC9769, May 2025,
+              <https://www.rfc-editor.org/rfc/rfc9769>.
 
    [SMPTE2059]
               "SMPTE Profile for Use of IEEE-1588 Precision Time
