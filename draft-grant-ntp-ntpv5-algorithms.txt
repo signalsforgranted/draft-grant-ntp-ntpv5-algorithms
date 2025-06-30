@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                              29 June 2025
+Internet-Draft                                              30 June 2025
 Intended status: Informational                                          
-Expires: 31 December 2025
+Expires: 1 January 2026
 
 
                             NTPv5 Algorithms
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 December 2025.
+   This Internet-Draft will expire on 1 January 2026.
 
 Copyright Notice
 
@@ -133,10 +133,11 @@ Table of Contents
 
 3.1.  Use of Extension Fields
 
-   Algorithms may choose to require additional information be sent by
-   either client or server, however this brings the risk of these fields
-   not being sent by peers which do not support them.  Algorithms should
-   have explicit behaviours defined when they are not present.
+   Algorithms may choose to use additional information be sent by either
+   client or server, however this brings the risk of these fields not
+   being correctly handled by peers which do not support them.
+   Algorithms must have explicit behaviours defined when any required
+   extension fields are not present.
 
 3.2.  Use of non-UTC timescales
 
@@ -194,10 +195,10 @@ Table of Contents
    General security considerations for time protocols are discussed in
    RFC 7384 [RFC7384], and security considerations specific to NTPv5
    [I-D.draft-ietf-ntp-ntpv5] should also be noted.  Not all threats can
-   be sufficiently mitigated through the use of algorithms, namely
+   be sufficiently mitigated through the use of algorithms, for example
    packet manipulation, spoofing, and cryptographic performance attacks
-   which may be better mitigated through the use of authenticated
-   encryption via NTS [RFC8915].
+   may be better mitigated through the use of authenticated encryption
+   via NTS [RFC8915].
 
    New algorithm designers should take into consideration the expected
    threat model of deployments and describe which threats could
@@ -206,10 +207,6 @@ Table of Contents
 
    *TODO*: Discuss general attacks on time via algorithms, e.g. time-
    shifting
-
-   *TODO*: Can Khronos be used with NTPv5, or would there be
-   considerable adaption, non-UTC timescale and timestamp representation
-   aside?
 
 6.  IANA Considerations
 
