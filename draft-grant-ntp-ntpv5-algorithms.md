@@ -72,7 +72,7 @@ The decoupling of algorithms to the wire protocol is not new - PTP [IEEE1588-201
 
 ## Use of Extension Fields
 
-Algorithms may choose to require additional information be sent by either client or server, however this brings the risk of these fields not being sent by peers which do not support them. Algorithms should have explicit behaviours defined when they are not present.
+Algorithms may choose to use additional information be sent by either client or server, however this brings the risk of these fields not being correctly handled by peers which do not support them. Algorithms must have explicit behaviours defined when any required extension fields are not present.
 
 ## Use of non-UTC timescales
 
@@ -83,6 +83,8 @@ In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and
 A leap second is a second inserted or removed from the UTC timescale to maintain synchronisation with the rotation of the earth. Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
 
 Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".
+
+
 
 **TODO**: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
 
@@ -96,19 +98,15 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 # Security Considerations
 
-General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, namely packet manipulation, spoofing, and cryptographic performance attacks which may be better mitigated through the use of authenticated encryption via NTS [RFC8915].
+General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, for example packet manipulation, spoofing, and cryptographic performance attacks may be better mitigated through the use of authenticated encryption via NTS [RFC8915].
 
 New algorithm designers should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the use case.
 
 **TODO**: Discuss general attacks on time via algorithms, e.g. time-shifting
 
-**TODO**: Can Khronos be used with NTPv5, or would there be considerable adaption, non-UTC timescale and timestamp representation aside?
-
-
 # IANA Considerations
 
 This document has no IANA actions.
-
 
 --- back
 
