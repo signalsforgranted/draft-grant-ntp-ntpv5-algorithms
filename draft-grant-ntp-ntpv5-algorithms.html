@@ -1200,7 +1200,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">NTP version 4 (NTPv4) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span> defines various algorithms and logic which handle several different aspects of acquiring and sustaining synchronisation between NTP clients and servers including filtering of measurements, security mechanisms, source selection, and clock control amongst others. Over time NTPv4 has seen additional algorithms be defined to improve security and accuracy, with Khronos <span>[<a href="#RFC9523" class="cite xref">RFC9523</a>]</span> defining a companion method to run alongside with NTPv4 clients that aims to detect and mitigate time-shifting based attacks, and interleaved modes <span>[<a href="#RFC9769" class="cite xref">RFC9769</a>]</span> which defines additional operational modes for both clients and servers by holding additional state and performing additional checks on timestamp values.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">However, NTP version 5 (NTPv5) <span>[<a href="#I-D.draft-ietf-ntp-ntpv5" class="cite xref">I-D.draft-ietf-ntp-ntpv5</a>]</span> does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many factors that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5, such as trade-offs between precision and security, costs of complexity, etc.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">The decoupling of algorithms to the wire protocol is not new - PTP <span>[<a href="#IEEE1588-2019" class="cite xref">IEEE1588-2019</a>]</span> has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol such as the "daily jam" function in SMPTE ST-2059 <span>[<a href="#SMPTE2059" class="cite xref">SMPTE2059</a>]</span> where discontinuity is deliberately transmitted to remove built up discrepancies in values.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">The decoupling of algorithms to the wire protocol is not new - PTP <span>[<a href="#IEEE1588" class="cite xref">IEEE1588</a>]</span> has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, for example the "daily jam" function in SMPTE ST-2059 <span>[<a href="#SMPTE2059" class="cite xref">SMPTE2059</a>]</span> where discontinuity is deliberately transmitted to remove built up discrepancies in values.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1234,7 +1234,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-use-of-non-utc-timescales">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-use-of-non-utc-timescales" class="section-name selfRef">Use of non-UTC timescales</a>
         </h3>
-<p id="section-3.2-1">In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales, and use different logic depending on the timescale supported.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="leap-seconds-and-leap-second-smearing">
@@ -1242,9 +1242,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-leap-seconds-and-leap-secon">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-leap-seconds-and-leap-secon" class="section-name selfRef">Leap Seconds and Leap Second Smearing</a>
         </h3>
-<p id="section-3.3-1">A leap second is a second inserted or removed from the UTC timescale to maintain synchronisation with the rotation of the earth. Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September <span>[<a href="#TF.460" class="cite xref">TF.460</a>]</span>. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second <span>[<a href="#RFC7164" class="cite xref">RFC7164</a>]</span>, keeping system time monotonic but less accurate during the period.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second <span>[<a href="#RFC7164" class="cite xref">RFC7164</a>]</span>, keeping system time monotonic but less accurate during the period.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.3-2">Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.3-3"><strong>TODO</strong>: Cover smearing, separating smearing of what's transmitted vs synchronising system clock<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1265,7 +1264,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-5-1">General security considerations for time protocols are discussed in RFC 7384 <span>[<a href="#RFC7384" class="cite xref">RFC7384</a>]</span>, and security considerations specific to NTPv5 <span>[<a href="#I-D.draft-ietf-ntp-ntpv5" class="cite xref">I-D.draft-ietf-ntp-ntpv5</a>]</span> should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, for example packet manipulation, spoofing, and cryptographic performance attacks may be better mitigated through the use of authenticated encryption via NTS <span>[<a href="#RFC8915" class="cite xref">RFC8915</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">New algorithm designers should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the use case.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-2">Designers of new algorithms should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the intended use cases.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3"><strong>TODO</strong>: Discuss general attacks on time via algorithms, e.g. time-shifting<a href="#section-5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1309,7 +1308,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd>
 <span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ntp-ntpv5-04</span>, <time datetime="2025-04-10" class="refDate">10 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-04">https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="IEEE1588-2019">[IEEE1588-2019]</dt>
+<dt id="IEEE1588">[IEEE1588]</dt>
         <dd>
 <span class="refTitle">"IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems"</span>, <span class="refContent">IEEE</span>, <span class="seriesInfo">DOI 10.1109/ieeestd.2020.9120376</span>, <span class="seriesInfo">ISBN ["9781504463416"]</span>, <time datetime="2020-06" class="refDate">June 2020</time>, <span>&lt;<a href="https://doi.org/10.1109/ieeestd.2020.9120376">https://doi.org/10.1109/ieeestd.2020.9120376</a>&gt;</span>. </dd>
 <dd class="break"></dd>
@@ -1338,12 +1337,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">A. Malhotra</span>, <span class="refTitle">"NTP Interleaved Modes"</span>, <span class="seriesInfo">RFC 9769</span>, <span class="seriesInfo">DOI 10.17487/RFC9769</span>, <time datetime="2025-05" class="refDate">May 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9769">https://www.rfc-editor.org/rfc/rfc9769</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SMPTE2059">[SMPTE2059]</dt>
-        <dd>
-<span class="refTitle">"SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf">https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="TF.460">[TF.460]</dt>
       <dd>
-<span class="refAuthor">International Telecommunications Union</span>, <span class="refTitle">"Standard-frequency and time-signal emissions"</span>, <span class="seriesInfo">ITU-R Recommendation TF.460-6</span>, <time datetime="2002-02" class="refDate">February 2002</time>, <span>&lt;<a href="http://www.itu.int/rec/R-REC-TF.460/">http://www.itu.int/rec/R-REC-TF.460/</a>&gt;</span>. </dd>
+<span class="refTitle">"SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf">https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

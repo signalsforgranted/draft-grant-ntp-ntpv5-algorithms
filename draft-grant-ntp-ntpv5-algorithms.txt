@@ -108,10 +108,10 @@ Table of Contents
    complexity, etc.
 
    The decoupling of algorithms to the wire protocol is not new - PTP
-   [IEEE1588-2019] has the concept of "profiles", each of which define
+   [IEEE1588] has the concept of "profiles", each of which define
    different behaviours and algorithms adapted for specific deployments
    (for example in automotive or power industries), and may even include
-   additional capabilities to the protocol such as the "daily jam"
+   additional capabilities to the protocol, for example the "daily jam"
    function in SMPTE ST-2059 [SMPTE2059] where discontinuity is
    deliberately transmitted to remove built up discrepancies in values.
 
@@ -142,36 +142,26 @@ Table of Contents
 3.2.  Use of non-UTC timescales
 
    In addition to UTC, NTPv5 includes support for the transmission of
-   TAI, UT1, and leap-smeared UTC timescales.  Implementations shouldn't
-   mix timestamps from different timescales when performing
-   calculations, and it's recommended they minimise the conversion of
-   timescales where possible to reduce potential confusion and aide in
-   accuracy.  Algorithms may choose to support a limited number of
-   timescales, and use different logic depending on the timescale
-   supported.
+   TAI, UT1, and leap-smeared UTC timescales.  Algorithms may choose to
+   support a limited subset of timescales, and use different logic
+   depending on the timescale supported.  Implementations shouldn't mix
+   timestamps from different timescales when performing calculations,
+   and it's recommended they minimise the conversion of timescales where
+   possible to reduce potential confusion and aide in accuracy.
 
 3.3.  Leap Seconds and Leap Second Smearing
 
-   A leap second is a second inserted or removed from the UTC timescale
-   to maintain synchronisation with the rotation of the earth.  Positive
-   or negative leap seconds may be inserted at the last day of the
-   scheduled month, which may be the last day of any month but
-   preferentially scheduled for December and June, and secondarily March
-   and September [TF.460].  Existing NTP implementations commonly use
-   one of several known approaches to applying leap seconds to system
-   time: they may "freeze" the clock where the leap second is inserted
-   at the beginning of the last second of the day, or the system clock
-   is "slewed" or "smeared" either before or commencing from the leap
-   second [RFC7164], keeping system time monotonic but less accurate
-   during the period.
+   Existing NTP implementations commonly use one of several known
+   approaches to applying leap seconds to system time: they may "freeze"
+   the clock where the leap second is inserted at the beginning of the
+   last second of the day, or the system clock is "slewed" or "smeared"
+   either before or commencing from the leap second [RFC7164], keeping
+   system time monotonic but less accurate during the period.
 
    Server implementations which use drifting mechanisms to smooth the
    leap second insertion such as slewing or smearing must only apply it
    to only to UTC, and must set the timescale flag in packets to clients
    as "Leap-smeared UTC".
-
-   *TODO*: Cover smearing, separating smearing of what's transmitted vs
-   synchronising system clock
 
 4.  NTPv4 Algorithm use with NTPv5
 
@@ -200,10 +190,10 @@ Table of Contents
    may be better mitigated through the use of authenticated encryption
    via NTS [RFC8915].
 
-   New algorithm designers should take into consideration the expected
-   threat model of deployments and describe which threats could
+   Designers of new algorithms should take into consideration the
+   expected threat model of deployments and describe which threats could
    potentially be mitigated from those which are not in scope for the
-   use case.
+   intended use cases.
 
    *TODO*: Discuss general attacks on time via algorithms, e.g. time-
    shifting
@@ -234,8 +224,7 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
               ntpv5-04>.
 
-   [IEEE1588-2019]
-              "IEEE Standard for a Precision Clock Synchronization
+   [IEEE1588] "IEEE Standard for a Precision Clock Synchronization
               Protocol for Networked Measurement and Control Systems",
               IEEE, DOI 10.1109/ieeestd.2020.9120376,
               ISBN ["9781504463416"], June 2020,
@@ -273,11 +262,6 @@ Table of Contents
               "SMPTE Profile for Use of IEEE-1588 Precision Time
               Protocol in Professional Broadcast Applications", 2021,
               <https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf>.
-
-   [TF.460]   International Telecommunications Union, "Standard-
-              frequency and time-signal emissions", ITU-R Recommendation
-              TF.460-6, February 2002,
-              <http://www.itu.int/rec/R-REC-TF.460/>.
 
 Acknowledgments
 
