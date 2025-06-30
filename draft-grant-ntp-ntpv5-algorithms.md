@@ -68,7 +68,7 @@ Algorithms may choose to use additional information be sent by either client or 
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. 
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy.
 
 ## Leap Seconds and Leap Second Smearing
 
