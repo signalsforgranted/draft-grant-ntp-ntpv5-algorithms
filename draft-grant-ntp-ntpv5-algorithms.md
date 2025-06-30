@@ -31,19 +31,11 @@ informative:
   RFC9523:
   RFC9769:
   I-D.draft-ietf-ntp-ntpv5:
-  IEEE1588-2019: DOI.10.1109/IEEESTD.2020.9120376
+  IEEE1588: DOI.10.1109/IEEESTD.2020.9120376
   SMPTE2059:
     title: "SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"
     date: 2021
     target: https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf
-  TF.460:
-    title: "Standard-frequency and time-signal emissions"
-    target: http://www.itu.int/rec/R-REC-TF.460/
-    author:
-      org: International Telecommunications Union
-    date: 2002-02
-    seriesinfo:
-      ITU-R: Recommendation TF.460-6
 ...
 
 --- abstract
@@ -58,7 +50,7 @@ NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic which handl
 
 However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not define these algorithms to allow for implementations to define their own which may be optimised for specific deployment use case or system constraints. For all implementations there are many factors that should be taken into consideration in the development of both new algorithms as well as the porting of existing algorithms to NTPv5, such as trade-offs between precision and security, costs of complexity, etc.
 
-The decoupling of algorithms to the wire protocol is not new - PTP [IEEE1588-2019] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol such as the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
+The decoupling of algorithms to the wire protocol is not new - PTP [IEEE1588] has the concept of "profiles", each of which define different behaviours and algorithms adapted for specific deployments (for example in automotive or power industries), and may even include additional capabilities to the protocol, for example the "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity is deliberately transmitted to remove built up discrepancies in values.
 
 # Conventions and Definitions
 
@@ -76,17 +68,13 @@ Algorithms may choose to use additional information be sent by either client or 
 
 ## Use of non-UTC timescales
 
-In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. Algorithms may choose to support a limited number of timescales, and use different logic depending on the timescale supported.
+In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy. 
 
 ## Leap Seconds and Leap Second Smearing
 
-A leap second is a second inserted or removed from the UTC timescale to maintain synchronisation with the rotation of the earth. Positive or negative leap seconds may be inserted at the last day of the scheduled month, which may be the last day of any month but preferentially scheduled for December and June, and secondarily March and September [TF.460]. Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
+Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second [RFC7164], keeping system time monotonic but less accurate during the period.
 
 Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".
-
-
-
-**TODO**: Cover smearing, separating smearing of what's transmitted vs synchronising system clock
 
 # NTPv4 Algorithm use with NTPv5
 
@@ -100,7 +88,7 @@ NTPv5 introduces several key differences to NTPv4 that implementations should be
 
 General security considerations for time protocols are discussed in RFC 7384 [RFC7384], and security considerations specific to NTPv5 [I-D.draft-ietf-ntp-ntpv5] should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, for example packet manipulation, spoofing, and cryptographic performance attacks may be better mitigated through the use of authenticated encryption via NTS [RFC8915].
 
-New algorithm designers should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the use case.
+Designers of new algorithms should take into consideration the expected threat model of deployments and describe which threats could potentially be mitigated from those which are not in scope for the intended use cases.
 
 **TODO**: Discuss general attacks on time via algorithms, e.g. time-shifting
 
