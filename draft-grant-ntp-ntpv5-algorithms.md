@@ -56,6 +56,8 @@ The decoupling of algorithms to the wire protocol is not new - PTP [IEEE1588] ha
 
 {::boilerplate bcp14-tagged}
 
+This document uses the terminology established in {{I-D.draft-ietf-ntp-ntpv5}}.
+
 # Algorithm Considerations
 
 **TODO**: General considerations, including interop (When Algorithms Collide)
@@ -83,6 +85,8 @@ Support for NTPv4 algorithms is not required for NTPv5 implementations, however 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
 
 **TODO**: Put in any other points
+
+**TODO**: Interleaved mode
 
 # Security Considerations
 
