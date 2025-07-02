@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                              30 June 2025
+Internet-Draft                                               2 July 2025
 Intended status: Informational                                          
-Expires: 1 January 2026
+Expires: 3 January 2026
 
 
                             NTPv5 Algorithms
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 January 2026.
+   This Internet-Draft will expire on 3 January 2026.
 
 Copyright Notice
 
@@ -123,6 +123,9 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
+   This document uses the terminology established in
+   [I-D.draft-ietf-ntp-ntpv5].
+
 3.  Algorithm Considerations
 
    *TODO*: General considerations, including interop (When Algorithms
@@ -180,6 +183,8 @@ Table of Contents
 
    *TODO*: Put in any other points
 
+   *TODO*: Interleaved mode
+
 5.  Security Considerations
 
    General security considerations for time protocols are discussed in
@@ -220,9 +225,9 @@ Table of Contents
    [I-D.draft-ietf-ntp-ntpv5]
               Lichvar, M. and T. Mizrahi, "Network Time Protocol Version
               5", Work in Progress, Internet-Draft, draft-ietf-ntp-
-              ntpv5-04, 10 April 2025,
+              ntpv5-05, 2 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
-              ntpv5-04>.
+              ntpv5-05>.
 
    [IEEE1588] "IEEE Standard for a Precision Clock Synchronization
               Protocol for Networked Measurement and Control Systems",
