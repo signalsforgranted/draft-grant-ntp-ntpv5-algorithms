@@ -62,6 +62,14 @@ This document uses the terminology established in {{I-D.draft-ietf-ntp-ntpv5}}.
 
 **TODO**: General considerations, including interop (When Algorithms Collide)
 
+## Source Selection
+
+## Filtering
+
+## PLL/FLL
+
+## Clock control
+
 **TODO**: Signalling of algorithms? If so, this would likely require an IANA registry
 
 ## Use of Extension Fields
