@@ -1047,7 +1047,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Grant</td>
-<td class="center">Expires 3 January 2026</td>
+<td class="center">Expires 11 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-grant-ntp-ntpv5-algorithms-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-02" class="published">2 July 2025</time>
+<time datetime="2025-07-10" class="published">10 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-03">3 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-01-11">11 January 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1114,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 11 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1153,13 +1153,25 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-algorithm-considerations" class="internal xref">Algorithm Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-use-of-extension-fields" class="internal xref">Use of Extension Fields</a></p>
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-source-selection" class="internal xref">Source Selection</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-use-of-non-utc-timescales" class="internal xref">Use of non-UTC timescales</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-filtering" class="internal xref">Filtering</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-leap-seconds-and-leap-secon" class="internal xref">Leap Seconds and Leap Second Smearing</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-pll-fll" class="internal xref">PLL/FLL</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-clock-control" class="internal xref">Clock control</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-use-of-extension-fields" class="internal xref">Use of Extension Fields</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
+                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-use-of-non-utc-timescales" class="internal xref">Use of non-UTC timescales</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-leap-seconds-and-leap-secon" class="internal xref">Leap Seconds and Leap Second Smearing</a></p>
 </li>
             </ul>
 </li>
@@ -1221,30 +1233,58 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-algorithm-considerations" class="section-name selfRef">Algorithm Considerations</a>
       </h2>
 <p id="section-3-1"><strong>TODO</strong>: General considerations, including interop (When Algorithms Collide)<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><strong>TODO</strong>: Signalling of algorithms? If so, this would likely require an IANA registry<a href="#section-3-2" class="pilcrow">¶</a></p>
-<div id="use-of-extension-fields">
+<div id="source-selection">
 <section id="section-3.1">
-        <h3 id="name-use-of-extension-fields">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-use-of-extension-fields" class="section-name selfRef">Use of Extension Fields</a>
+        <h3 id="name-source-selection">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-source-selection" class="section-name selfRef">Source Selection</a>
+      </h3>
+</section>
+</div>
+<div id="filtering">
+<section id="section-3.2">
+        <h3 id="name-filtering">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-filtering" class="section-name selfRef">Filtering</a>
+      </h3>
+</section>
+</div>
+<div id="pllfll">
+<section id="section-3.3">
+        <h3 id="name-pll-fll">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-pll-fll" class="section-name selfRef">PLL/FLL</a>
+      </h3>
+</section>
+</div>
+<div id="clock-control">
+<section id="section-3.4">
+        <h3 id="name-clock-control">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-clock-control" class="section-name selfRef">Clock control</a>
         </h3>
-<p id="section-3.1-1">Algorithms may choose to use additional information be sent by either client or server, however this brings the risk of these fields not being correctly handled by peers which do not support them. Algorithms must have explicit behaviours defined when any required extension fields are not present.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-1"><strong>TODO</strong>: Signalling of algorithms? If so, this would likely require an IANA registry<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="use-of-extension-fields">
+<section id="section-3.5">
+        <h3 id="name-use-of-extension-fields">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-use-of-extension-fields" class="section-name selfRef">Use of Extension Fields</a>
+        </h3>
+<p id="section-3.5-1">Algorithms may choose to use additional information be sent by either client or server, however this brings the risk of these fields not being correctly handled by peers which do not support them. Algorithms must have explicit behaviours defined when any required extension fields are not present.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use-of-non-utc-timescales">
-<section id="section-3.2">
+<section id="section-3.6">
         <h3 id="name-use-of-non-utc-timescales">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-use-of-non-utc-timescales" class="section-name selfRef">Use of non-UTC timescales</a>
+<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-use-of-non-utc-timescales" class="section-name selfRef">Use of non-UTC timescales</a>
         </h3>
-<p id="section-3.2-1">In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.6-1">In addition to UTC, NTPv5 includes support for the transmission of TAI, UT1, and leap-smeared UTC timescales. Algorithms may choose to support a limited subset of timescales, and use different logic depending on the timescale supported. Implementations shouldn't mix timestamps from different timescales when performing calculations, and it's recommended they minimise the conversion of timescales where possible to reduce potential confusion and aide in accuracy.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="leap-seconds-and-leap-second-smearing">
-<section id="section-3.3">
+<section id="section-3.7">
         <h3 id="name-leap-seconds-and-leap-secon">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-leap-seconds-and-leap-secon" class="section-name selfRef">Leap Seconds and Leap Second Smearing</a>
+<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-leap-seconds-and-leap-secon" class="section-name selfRef">Leap Seconds and Leap Second Smearing</a>
         </h3>
-<p id="section-3.3-1">Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second <span>[<a href="#RFC7164" class="cite xref">RFC7164</a>]</span>, keeping system time monotonic but less accurate during the period.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.7-1">Existing NTP implementations commonly use one of several known approaches to applying leap seconds to system time: they may "freeze" the clock where the leap second is inserted at the beginning of the last second of the day, or the system clock is "slewed" or "smeared" either before or commencing from the leap second <span>[<a href="#RFC7164" class="cite xref">RFC7164</a>]</span>, keeping system time monotonic but less accurate during the period.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2">Server implementations which use drifting mechanisms to smooth the leap second insertion such as slewing or smearing must only apply it to only to UTC, and must set the timescale flag in packets to clients as "Leap-smeared UTC".<a href="#section-3.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
