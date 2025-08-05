@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                              10 July 2025
+Internet-Draft                                             5 August 2025
 Intended status: Informational                                          
-Expires: 11 January 2026
+Expires: 6 February 2026
 
 
                             NTPv5 Algorithms
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2026.
+   This Internet-Draft will expire on 6 February 2026.
 
 Copyright Notice
 
@@ -72,13 +72,9 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Algorithm Considerations
-     3.1.  Source Selection
-     3.2.  Filtering
-     3.3.  PLL/FLL
-     3.4.  Clock control
-     3.5.  Use of Extension Fields
-     3.6.  Use of non-UTC timescales
-     3.7.  Leap Seconds and Leap Second Smearing
+     3.1.  Use of Extension Fields
+     3.2.  Use of non-UTC timescales
+     3.3.  Leap Seconds and Leap Second Smearing
    4.  NTPv4 Algorithm use with NTPv5
    5.  Security Considerations
    6.  IANA Considerations
@@ -135,18 +131,10 @@ Table of Contents
    *TODO*: General considerations, including interop (When Algorithms
    Collide)
 
-3.1.  Source Selection
-
-3.2.  Filtering
-
-3.3.  PLL/FLL
-
-3.4.  Clock control
-
    *TODO*: Signalling of algorithms?  If so, this would likely require
    an IANA registry
 
-3.5.  Use of Extension Fields
+3.1.  Use of Extension Fields
 
    Algorithms may choose to use additional information be sent by either
    client or server, however this brings the risk of these fields not
@@ -154,7 +142,7 @@ Table of Contents
    Algorithms must have explicit behaviours defined when any required
    extension fields are not present.
 
-3.6.  Use of non-UTC timescales
+3.2.  Use of non-UTC timescales
 
    In addition to UTC, NTPv5 includes support for the transmission of
    TAI, UT1, and leap-smeared UTC timescales.  Algorithms may choose to
@@ -164,7 +152,7 @@ Table of Contents
    and it's recommended they minimise the conversion of timescales where
    possible to reduce potential confusion and aide in accuracy.
 
-3.7.  Leap Seconds and Leap Second Smearing
+3.3.  Leap Seconds and Leap Second Smearing
 
    Existing NTP implementations commonly use one of several known
    approaches to applying leap seconds to system time: they may "freeze"
