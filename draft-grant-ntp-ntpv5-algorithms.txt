@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                             5 August 2025
+Internet-Draft                                            14 August 2025
 Intended status: Informational                                          
-Expires: 6 February 2026
+Expires: 15 February 2026
 
 
                             NTPv5 Algorithms
@@ -14,8 +14,9 @@ Expires: 6 February 2026
 Abstract
 
    This document describes considerations of synchronisation algorithms
-   with version 5 of the Network Time Protocol (NTP), and defines the
-   use of NTP version 4's algorithms when used with NTP version 5.
+   with version 5 of the Network Time Protocol (NTP), and provides
+   guidance on the use of NTP version 4's algorithms when used with NTP
+   version 5.
 
 About This Document
 
@@ -51,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2026.
+   This Internet-Draft will expire on 15 February 2026.
 
 Copyright Notice
 
@@ -196,9 +197,11 @@ Table of Contents
    via NTS [RFC8915].
 
    Designers of new algorithms should take into consideration the
-   expected threat model of deployments and describe which threats could
-   potentially be mitigated from those which are not in scope for the
-   intended use cases.
+   expected threat model of deployments and should describe which
+   threats could potentially be mitigated from those which are not in
+   scope for the intended use cases, for example closed network
+   deployments have a very different set of risks in comparison to
+   deployments on the internet.
 
    *TODO*: Discuss general attacks on time via algorithms, e.g. time-
    shifting
