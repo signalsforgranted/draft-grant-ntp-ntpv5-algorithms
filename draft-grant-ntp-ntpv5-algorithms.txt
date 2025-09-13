@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                            14 August 2025
+Internet-Draft                                         13 September 2025
 Intended status: Informational                                          
-Expires: 15 February 2026
+Expires: 17 March 2026
 
 
                             NTPv5 Algorithms
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 February 2026.
+   This Internet-Draft will expire on 17 March 2026.
 
 Copyright Notice
 
@@ -73,10 +73,10 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Algorithm Considerations
-     3.1.  Use of Extension Fields
-     3.2.  Use of non-UTC timescales
+     3.1.  Extension Fields
+     3.2.  Non-UTC timescales
      3.3.  Leap Seconds and Leap Second Smearing
-   4.  NTPv4 Algorithm use with NTPv5
+   4.  Use of NTPv4 Algorithms with NTPv5
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -88,33 +88,35 @@ Table of Contents
 1.  Introduction
 
    NTP version 4 (NTPv4) [RFC5905] defines various algorithms and logic
-   which handle several different aspects of acquiring and sustaining
-   synchronisation between NTP clients and servers including filtering
-   of measurements, security mechanisms, source selection, and clock
-   control amongst others.  Over time NTPv4 has seen additional
-   algorithms be defined to improve security and accuracy, with Khronos
-   [RFC9523] defining a companion method to run alongside with NTPv4
-   clients that aims to detect and mitigate time-shifting based attacks,
-   and interleaved modes [RFC9769] which defines additional operational
-   modes for both clients and servers by holding additional state and
-   performing additional checks on timestamp values.
+   which handle several different aspects of acquiring and maintaining
+   synchronisation of NTP clients including filtering of measurements,
+   security mechanisms, source selection, and clock control, amongst
+   others.  Over time NTPv4 has seen additional algorithms be defined to
+   improve security and accuracy, with Khronos [RFC9523] defining a
+   companion method to run alongside with NTPv4 clients that aims to
+   detect and mitigate time-shifting based attacks, and interleaved
+   modes [RFC9769] which defines additional operational modes for both
+   clients and servers by holding additional state and performing
+   additional checks on timestamp values.
 
-   However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] does not
-   define these algorithms to allow for implementations to define their
-   own which may be optimised for specific deployment use case or system
-   constraints.  For all implementations there are many factors that
-   should be taken into consideration in the development of both new
-   algorithms as well as the porting of existing algorithms to NTPv5,
-   such as trade-offs between precision and security, costs of
-   complexity, etc.
+   However, NTP version 5 (NTPv5) [I-D.draft-ietf-ntp-ntpv5] explicitly
+   does not define these algorithms in conjunction with the wire
+   protocol to allow for the creation and evolution of new algorithms
+   and implementations which may be optimised for specific deployment
+   use case or system constraints.  For all implementations there are
+   many factors that should be taken into consideration in the
+   development of both new algorithms as well as the porting of existing
+   algorithms to NTPv5, such as trade-offs between precision and
+   security, costs of complexity, etc.
 
-   The decoupling of algorithms to the wire protocol is not new - PTP
-   [IEEE1588] has the concept of "profiles", each of which define
-   different behaviours and algorithms adapted for specific deployments
-   (for example in automotive or power industries), and may even include
-   additional capabilities to the protocol, for example the "daily jam"
-   function in SMPTE ST-2059 [SMPTE2059] where discontinuity is
-   deliberately transmitted to remove built up discrepancies in values.
+   The decoupling of algorithms to their dependent wire protocol is not
+   new - PTP [IEEE1588] has the concept of "profiles", each of which
+   define different behaviours and algorithms adapted for specific
+   deployments (for example in automotive or power industries), and may
+   even include additional capabilities to the protocol, for example the
+   "daily jam" function in SMPTE ST-2059 [SMPTE2059] where discontinuity
+   is deliberately transmitted to remove built up discrepancies in
+   values.
 
 2.  Conventions and Definitions
 
@@ -135,7 +137,7 @@ Table of Contents
    *TODO*: Signalling of algorithms?  If so, this would likely require
    an IANA registry
 
-3.1.  Use of Extension Fields
+3.1.  Extension Fields
 
    Algorithms may choose to use additional information be sent by either
    client or server, however this brings the risk of these fields not
@@ -143,7 +145,7 @@ Table of Contents
    Algorithms must have explicit behaviours defined when any required
    extension fields are not present.
 
-3.2.  Use of non-UTC timescales
+3.2.  Non-UTC timescales
 
    In addition to UTC, NTPv5 includes support for the transmission of
    TAI, UT1, and leap-smeared UTC timescales.  Algorithms may choose to
@@ -167,7 +169,7 @@ Table of Contents
    to only to UTC, and must set the timescale flag in packets to clients
    as "Leap-smeared UTC".
 
-4.  NTPv4 Algorithm use with NTPv5
+4.  Use of NTPv4 Algorithms with NTPv5
 
    Support for NTPv4 algorithms is not required for NTPv5
    implementations, however those supporting both versions of NTP may
@@ -181,8 +183,6 @@ Table of Contents
    ensure longevity and prevent rollover in the immediate future, which
    should be taken into consideration when processing and producing
    packets.
-
-   *TODO*: Put in any other points
 
    *TODO*: Interleaved mode
 
@@ -228,9 +228,9 @@ Table of Contents
    [I-D.draft-ietf-ntp-ntpv5]
               Lichvar, M. and T. Mizrahi, "Network Time Protocol Version
               5", Work in Progress, Internet-Draft, draft-ietf-ntp-
-              ntpv5-05, 2 July 2025,
+              ntpv5-06, 10 September 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
-              ntpv5-05>.
+              ntpv5-06>.
 
    [IEEE1588] "IEEE Standard for a Precision Clock Synchronization
               Protocol for Networked Measurement and Control Systems",
