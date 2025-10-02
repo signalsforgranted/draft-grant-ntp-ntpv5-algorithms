@@ -9,10 +9,10 @@
 <meta content="
        This document describes considerations of synchronisation algorithms with version 5 of the Network Time Protocol (NTP), and provides guidance on the use of NTP version 4's algorithms when used with NTP version 5. 
     " name="description">
-<meta content="xml2rfc 3.30.1" name="generator">
+<meta content="xml2rfc 3.30.2" name="generator">
 <meta content="draft-grant-ntp-ntpv5-algorithms-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.1
+  xml2rfc 3.30.2
     Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -1043,11 +1043,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">NTPv5 Algorithms</td>
-<td class="right">September 2025</td>
+<td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Grant</td>
-<td class="center">Expires 20 March 2026</td>
+<td class="center">Expires 5 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-grant-ntp-ntpv5-algorithms-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-16" class="published">16 September 2025</time>
+<time datetime="2025-10-02" class="published">2 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-20">20 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-05">5 April 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1114,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1221,7 +1221,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-algorithm-considerations" class="section-name selfRef">Algorithm Considerations</a>
       </h2>
 <p id="section-3-1"><strong>TODO</strong>: General considerations, including interop (When Algorithms Collide)<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><strong>TODO</strong>: Signalling of algorithms? If so, this would likely require an IANA registry<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2"><strong>TODO</strong>: Discuss divergence risk of algorithm from implementation - existing NTPv4 implementations differ greatly<a href="#section-3-2" class="pilcrow">¶</a></p>
 <div id="extension-fields">
 <section id="section-3.1">
         <h3 id="name-extension-fields">
@@ -1254,9 +1254,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-use-of-ntpv4-algorithms-wit">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-use-of-ntpv4-algorithms-wit" class="section-name selfRef">Use of NTPv4 Algorithms with NTPv5</a>
       </h2>
-<p id="section-4-1">Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3"><strong>TODO</strong>: Interleaved mode<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1267,6 +1266,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-5-1">General security considerations for time protocols are discussed in RFC 7384 <span>[<a href="#RFC7384" class="cite xref">RFC7384</a>]</span>, and security considerations specific to NTPv5 <span>[<a href="#I-D.draft-ietf-ntp-ntpv5" class="cite xref">I-D.draft-ietf-ntp-ntpv5</a>]</span> should also be noted. Not all threats can be sufficiently mitigated through the use of algorithms, for example packet manipulation, spoofing, and cryptographic performance attacks may be better mitigated through the use of authenticated encryption via NTS <span>[<a href="#RFC8915" class="cite xref">RFC8915</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">Designers of new algorithms should take into consideration the expected threat model of deployments and should define which threats could potentially be mitigated from those which are not in scope for the intended use cases, for example closed network deployments may have a reduced risk of man in the middle adversaries compared to deployments on public internet.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3"><strong>TODO</strong>: Discuss general attacks on time via algorithms, e.g. time-shifting<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4"><strong>TODO</strong>: NTPv4 algorithm specific vulnerabilities - Byzatine issues<a href="#section-5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">

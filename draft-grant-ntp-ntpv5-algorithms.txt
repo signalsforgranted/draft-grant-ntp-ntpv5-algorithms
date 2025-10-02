@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                         16 September 2025
+Internet-Draft                                            2 October 2025
 Intended status: Informational                                          
-Expires: 20 March 2026
+Expires: 5 April 2026
 
 
                             NTPv5 Algorithms
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 March 2026.
+   This Internet-Draft will expire on 5 April 2026.
 
 Copyright Notice
 
@@ -134,8 +134,8 @@ Table of Contents
    *TODO*: General considerations, including interop (When Algorithms
    Collide)
 
-   *TODO*: Signalling of algorithms?  If so, this would likely require
-   an IANA registry
+   *TODO*: Discuss divergence risk of algorithm from implementation -
+   existing NTPv4 implementations differ greatly
 
 3.1.  Extension Fields
 
@@ -171,10 +171,9 @@ Table of Contents
 
 4.  Use of NTPv4 Algorithms with NTPv5
 
-   Support for NTPv4 algorithms is not required for NTPv5
-   implementations, however those supporting both versions of NTP may
-   find it easy to include as a default or fall-back option in
-   configurations where others are not set.
+   NTPv5 implementations may use NTPv4 algorithms.  Those supporting
+   both versions of NTP may find it easy to include as a default or
+   fall-back option in configurations where others are not set.
 
    NTPv5 introduces several key differences to NTPv4 that
    implementations should be aware of when either building new
@@ -183,8 +182,6 @@ Table of Contents
    ensure longevity and prevent rollover in the immediate future, which
    should be taken into consideration when processing and producing
    packets.
-
-   *TODO*: Interleaved mode
 
 5.  Security Considerations
 
@@ -205,6 +202,8 @@ Table of Contents
 
    *TODO*: Discuss general attacks on time via algorithms, e.g. time-
    shifting
+
+   *TODO*: NTPv4 algorithm specific vulnerabilities - Byzatine issues
 
 6.  IANA Considerations
 
