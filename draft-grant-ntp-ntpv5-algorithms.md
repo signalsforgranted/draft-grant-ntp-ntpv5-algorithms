@@ -62,7 +62,7 @@ This document uses the terminology established in {{I-D.draft-ietf-ntp-ntpv5}}.
 
 **TODO**: General considerations, including interop (When Algorithms Collide)
 
-**TODO**: Signalling of algorithms? If so, this would likely require an IANA registry
+**TODO**: Discuss divergence risk of algorithm from implementation - existing NTPv4 implementations differ greatly
 
 ## Extension Fields
 
@@ -80,11 +80,9 @@ Server implementations which use drifting mechanisms to smooth the leap second i
 
 # Use of NTPv4 Algorithms with NTPv5
 
-Support for NTPv4 algorithms is not required for NTPv5 implementations, however those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.
+NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.
 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
-
-**TODO**: Interleaved mode
 
 # Security Considerations
 
@@ -93,6 +91,8 @@ General security considerations for time protocols are discussed in RFC 7384 [RF
 Designers of new algorithms should take into consideration the expected threat model of deployments and should define which threats could potentially be mitigated from those which are not in scope for the intended use cases, for example closed network deployments may have a reduced risk of man in the middle adversaries compared to deployments on public internet.
 
 **TODO**: Discuss general attacks on time via algorithms, e.g. time-shifting
+
+**TODO**: NTPv4 algorithm specific vulnerabilities - Byzatine issues
 
 # IANA Considerations
 
