@@ -36,6 +36,8 @@ informative:
     title: "SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications"
     date: 2021
     target: https://pub.smpte.org/pub/st2059-2/st2059-2-2021.pdf
+  RFC5905-Errata:
+    target: https://www.rfc-editor.org/errata_search.php?rfc=5905&rec_status=1&presentation=records
 ...
 
 --- abstract
@@ -80,7 +82,7 @@ Server implementations which use drifting mechanisms to smooth the leap second i
 
 # Use of NTPv4 Algorithms with NTPv5
 
-NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.
+NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set. All implementations both new and existing should also be mindful of the various algorithm related errata which have been verified [RFC5905-Errata].
 
 NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.
 
