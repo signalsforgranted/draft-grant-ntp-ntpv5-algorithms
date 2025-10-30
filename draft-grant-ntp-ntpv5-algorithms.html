@@ -9,22 +9,21 @@
 <meta content="
        This document describes considerations of synchronisation algorithms with version 5 of the Network Time Protocol (NTP), and provides guidance on the use of NTP version 4's algorithms when used with NTP version 5. 
     " name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="draft-grant-ntp-ntpv5-algorithms-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.4.0
+    platformdirs 4.5.0
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.5
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.2.14
 -->
 <link href="draft-grant-ntp-ntpv5-algorithms.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1047,7 +1046,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Grant</td>
-<td class="center">Expires 5 April 2026</td>
+<td class="center">Expires 3 May 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1059,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-grant-ntp-ntpv5-algorithms-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-10-02" class="published">2 October 2025</time>
+<time datetime="2025-10-30" class="published">30 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-04-05">5 April 2026</time></dd>
+<dd class="expires"><time datetime="2026-05-03">3 May 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1113,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 May 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1254,7 +1253,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-use-of-ntpv4-algorithms-wit">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-use-of-ntpv4-algorithms-wit" class="section-name selfRef">Use of NTPv4 Algorithms with NTPv5</a>
       </h2>
-<p id="section-4-1">NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">NTPv5 implementations may use NTPv4 algorithms. Those supporting both versions of NTP may find it easy to include as a default or fall-back option in configurations where others are not set. All implementations both new and existing should also be mindful of the various algorithm specific verified errata.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">NTPv5 introduces several key differences to NTPv4 that implementations should be aware of when either building new implementations of the NTPv4 algorithms or when adapting existing. Most notably, the timestamp format has been changed with NTPv5 to ensure longevity and prevent rollover in the immediate future, which should be taken into consideration when processing and producing packets.<a href="#section-4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1307,7 +1306,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dl class="references">
 <dt id="I-D.draft-ietf-ntp-ntpv5">[I-D.draft-ietf-ntp-ntpv5]</dt>
         <dd>
-<span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ntp-ntpv5-06</span>, <time datetime="2025-09-10" class="refDate">10 September 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06">https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Lichvar, M.</span> and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"Network Time Protocol Version 5"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ntp-ntpv5-07</span>, <time datetime="2025-10-16" class="refDate">16 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-07">https://datatracker.ietf.org/doc/html/draft-ietf-ntp-ntpv5-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IEEE1588">[IEEE1588]</dt>
         <dd>

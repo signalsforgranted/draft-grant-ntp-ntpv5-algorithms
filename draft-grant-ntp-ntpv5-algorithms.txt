@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                            2 October 2025
+Internet-Draft                                           30 October 2025
 Intended status: Informational                                          
-Expires: 5 April 2026
+Expires: 3 May 2026
 
 
                             NTPv5 Algorithms
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 April 2026.
+   This Internet-Draft will expire on 3 May 2026.
 
 Copyright Notice
 
@@ -173,7 +173,9 @@ Table of Contents
 
    NTPv5 implementations may use NTPv4 algorithms.  Those supporting
    both versions of NTP may find it easy to include as a default or
-   fall-back option in configurations where others are not set.
+   fall-back option in configurations where others are not set.  All
+   implementations both new and existing should also be mindful of the
+   various algorithm specific verified errata.
 
    NTPv5 introduces several key differences to NTPv4 that
    implementations should be aware of when either building new
@@ -227,9 +229,9 @@ Table of Contents
    [I-D.draft-ietf-ntp-ntpv5]
               Lichvar, M. and T. Mizrahi, "Network Time Protocol Version
               5", Work in Progress, Internet-Draft, draft-ietf-ntp-
-              ntpv5-06, 10 September 2025,
+              ntpv5-07, 16 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ntp-
-              ntpv5-06>.
+              ntpv5-07>.
 
    [IEEE1588] "IEEE Standard for a Precision Clock Synchronization
               Protocol for Networked Measurement and Control Systems",
