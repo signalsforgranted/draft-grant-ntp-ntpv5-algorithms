@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                          S. Grant
-Internet-Draft                                           30 October 2025
+Internet-Draft                                           31 October 2025
 Intended status: Informational                                          
-Expires: 3 May 2026
+Expires: 4 May 2026
 
 
                             NTPv5 Algorithms
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2026.
+   This Internet-Draft will expire on 4 May 2026.
 
 Copyright Notice
 
@@ -134,9 +134,6 @@ Table of Contents
    *TODO*: General considerations, including interop (When Algorithms
    Collide)
 
-   *TODO*: Discuss divergence risk of algorithm from implementation -
-   existing NTPv4 implementations differ greatly
-
 3.1.  Extension Fields
 
    Algorithms may choose to use additional information be sent by either
@@ -201,11 +198,6 @@ Table of Contents
    the intended use cases, for example closed network deployments may
    have a reduced risk of man in the middle adversaries compared to
    deployments on public internet.
-
-   *TODO*: Discuss general attacks on time via algorithms, e.g. time-
-   shifting
-
-   *TODO*: NTPv4 algorithm specific vulnerabilities - Byzatine issues
 
 6.  IANA Considerations
 
