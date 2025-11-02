@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-30T00:53:38.949268+00:00",
+  "timestamp": "2025-11-02T00:55:34.155630+00:00",
   "repo": "signalsforgranted/draft-grant-ntp-ntpv5-algorithms",
   "labels": [
     {
@@ -49,6 +49,71 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOO-3gTM7VIIiR",
+      "title": "Algorithm divergence",
+      "url": "https://github.com/signalsforgranted/draft-grant-ntp-ntpv5-algorithms/issues/1",
+      "state": "OPEN",
+      "author": "signalsforgranted",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Discuss divergence risk of algorithm from implementation - existing NTPv4 implementations differ already.",
+      "createdAt": "2025-10-31T16:45:27Z",
+      "updatedAt": "2025-10-31T16:45:27Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOO-3gTM7VIM1R",
+      "title": "Security Considerations",
+      "url": "https://github.com/signalsforgranted/draft-grant-ntp-ntpv5-algorithms/issues/2",
+      "state": "OPEN",
+      "author": "signalsforgranted",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Neta's work ([DOI:10.14722/ndss.2021.24302](https://doi.org/10.14722/ndss.2021.24302), [DOI:10.1145/3232755.3232766](https://doi.org/10.1145/3232755.3232766)) is a good starting point, but there is likely other research to look at that with relation to security.",
+      "createdAt": "2025-10-31T16:50:33Z",
+      "updatedAt": "2025-10-31T16:50:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOO-3gTM7VIb4k",
+      "title": "IANA registration?",
+      "url": "https://github.com/signalsforgranted/draft-grant-ntp-ntpv5-algorithms/issues/3",
+      "state": "OPEN",
+      "author": "signalsforgranted",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Inevitably if algorithms need to have both client and server capabilities, like, say interleaved mode, then there needs to be some sort of on-wire negotiation, and subsequently a way to handle it. This is all speculation of course, because it doesn't appear to exist today.\n\nExtension Field registration is already a _thing_ and I've already written some sort of text about it and maybe that's all that is needed, but in some utopian future where this document is adopted, you could bet that this may need consensus.",
+      "createdAt": "2025-10-31T17:11:22Z",
+      "updatedAt": "2025-10-31T17:11:22Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOO-3gTM7VIfop",
+      "title": "To define algorithms?",
+      "url": "https://github.com/signalsforgranted/draft-grant-ntp-ntpv5-algorithms/issues/4",
+      "state": "OPEN",
+      "author": "signalsforgranted",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "I leave this as a question to the working group, as it's a lot of work. The options are:\n1. Just refer to RFC 5905, and remind readers of the various errata.\n2. -bis the algorithmic text from 5905. No code, just say psuedo code (and/or math). Fix the errata at the same time.\n3. Write effectively new algorithms. I enjoy this idea like I enjoy doing my tax paperwork every year.",
+      "createdAt": "2025-10-31T17:16:29Z",
+      "updatedAt": "2025-10-31T17:16:29Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
