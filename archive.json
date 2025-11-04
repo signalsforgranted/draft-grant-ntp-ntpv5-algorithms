@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-02T00:55:34.155630+00:00",
+  "timestamp": "2025-11-04T00:52:05.876564+00:00",
   "repo": "signalsforgranted/draft-grant-ntp-ntpv5-algorithms",
   "labels": [
     {
@@ -110,9 +110,17 @@
       "labels": [],
       "body": "I leave this as a question to the working group, as it's a lot of work. The options are:\n1. Just refer to RFC 5905, and remind readers of the various errata.\n2. -bis the algorithmic text from 5905. No code, just say psuedo code (and/or math). Fix the errata at the same time.\n3. Write effectively new algorithms. I enjoy this idea like I enjoy doing my tax paperwork every year.",
       "createdAt": "2025-10-31T17:16:29Z",
-      "updatedAt": "2025-10-31T17:16:29Z",
+      "updatedAt": "2025-11-02T21:35:54Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "signalsforgranted",
+          "authorAssociation": "OWNER",
+          "body": "Just out of my own slightly masochistic curiosity, I decided to see how, and if some of the visuals could be done for option number 2. Apparently [kramdown supports doing math](https://github.com/cabo/kramdown-rfc/wiki/SVG#utftex-for-math), which means if (errata corrected) algorithms need representing, ASCII art can be left for SVG rendered math, so instead of:\n\n```\n                     i=n-1\n                     ---     epsilon_i\n      epsilon =       \\     ----------\n                      /        (i+1)\n                     ---     2\n                     i=0\n```\n\nWhat's possible is something more like:\n\n```math\n\\epsilon = \\sum_{i=0}^{i=n-1} \\frac{\\epsilon_i}{2^{(i+1)}}\n```\n\nDiagrams used in Clock Selection and Discipline could also take advantage of [aasvg](https://github.com/cabo/kramdown-rfc/wiki/SVG#ascii-art-to-svg) for much smoother visualisations as well.",
+          "createdAt": "2025-11-02T21:35:54Z",
+          "updatedAt": "2025-11-02T21:35:54Z"
+        }
+      ]
     }
   ],
   "pulls": []
